@@ -24,6 +24,7 @@ import {
   PencilIcon,
   XIcon,
 } from '@heroicons/react/outline'
+import { Link } from '@remix-run/react'
 
 const sidebarNavigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
@@ -55,9 +56,9 @@ const SideBar = () => {
         <Logo />
         <div className="flex-1 mt-6 w-full px-2 space-y-1">
           {sidebarNavigation.map((item) => (
-            <a
+            <Link
               key={item.name}
-              href={item.href}
+              to={item.href}
               className={classNames(
                 item.current ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-800 hover:text-white',
                 'group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium'
@@ -72,7 +73,7 @@ const SideBar = () => {
                 aria-hidden="true"
               />
               <span className="mt-2">{item.name}</span>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -168,9 +169,9 @@ const MobileMenu = ({ open, close }: MobileMenuProps) => {
                 <nav className="h-full flex flex-col">
                   <div className="space-y-1">
                     {sidebarNavigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         className={classNames(
                           item.current
                             ? 'bg-indigo-800 text-white'
@@ -187,7 +188,7 @@ const MobileMenu = ({ open, close }: MobileMenuProps) => {
                           aria-hidden="true"
                         />
                         <span>{item.name}</span>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </nav>
